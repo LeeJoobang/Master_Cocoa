@@ -14,4 +14,4 @@ import Foundation
 2. 사다리 출력
  - 높이 4개
  = 참여 인원과 높이를 매개변수로 받아 출력하는 printLadder()함수 작성
- - 
+ -
