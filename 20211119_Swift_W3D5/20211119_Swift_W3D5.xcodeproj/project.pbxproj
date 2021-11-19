@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		372AC70E274747AA0001EDAF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AC70D274747AA0001EDAF /* main.swift */; };
-		372AC715274747F40001EDAF /* W3D5_사다리타기.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372AC714274747F40001EDAF /* W3D5_사다리타기.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +25,7 @@
 /* Begin PBXFileReference section */
 		372AC70A274747AA0001EDAF /* 20211119_Swift_W3D5 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 20211119_Swift_W3D5; sourceTree = BUILT_PRODUCTS_DIR; };
 		372AC70D274747AA0001EDAF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		372AC714274747F40001EDAF /* W3D5_사다리타기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "W3D5_사다리타기.swift"; sourceTree = "<group>"; };
+		372AC714274747F40001EDAF /* W3D5_사다리타기_실패.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "W3D5_사다리타기_실패.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				372AC70D274747AA0001EDAF /* main.swift */,
-				372AC714274747F40001EDAF /* W3D5_사다리타기.swift */,
+				372AC714274747F40001EDAF /* W3D5_사다리타기_실패.swift */,
 			);
 			path = 20211119_Swift_W3D5;
 			sourceTree = "<group>";
@@ -124,7 +123,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				372AC70E274747AA0001EDAF /* main.swift in Sources */,
-				372AC715274747F40001EDAF /* W3D5_사다리타기.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
