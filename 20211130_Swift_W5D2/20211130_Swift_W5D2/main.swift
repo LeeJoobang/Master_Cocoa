@@ -6,14 +6,19 @@
 //
 
 import Foundation
-// 가위바위보
 
-func getUserChoice(userInput: String) -> String {
-  if userInput == "주먹" || userInput == "가위" || userInput == "보"  {
-    return userInput;
-  } else {
-    return "가위, 바위, 보를 내야합니다."
-  }
+print("==================================")
+print("          선공을 정하겠습니다.")
+print("==================================")
+print("\n")
+
+func getUserChoice(userInput: String)->String{
+    let userInput = readLine()!
+    if userInput == "rock" || userInput == "scissor" || userInput == "paper"{
+        return userInput
+    } else {
+        return "가위(scissor), 바위(rock), 보(paper)를 내주세요."
+    }
 }
 
 func getComputerChoice() ->  String {
@@ -21,51 +26,169 @@ func getComputerChoice() ->  String {
   
   switch random {
     case 0:
-      return "주먹"
+      return "rock"
     case 1:
-      return "가위"
+      return "scissor"
     case 2:
-      return "보"
+      return "paper"
     default:
      return "해당없음"
   }
 }
 
-
 func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
-  
   var decision: String = "비김"
-  
-  switch userChoice {
-    case "주먹":
-      if compChoice == "보" {
-        decision = "컴퓨터 승리"
-      } else if compChoice == "가위"{
-        decision = "유저 승리"
+
+    switch userChoice {
+    case "rock":
+      if compChoice == "paper" {
+        decision = "컴퓨터 승리 -> 컴퓨터 공격"
+      } else if compChoice == "scissor"{
+        decision = "유저 승리 -> 유저 공격"
       }
 
-    case "보":
-      if compChoice == "주먹" {
-        decision = "유저 승리"
-      } else if compChoice == "가위"{
-        decision = "컴퓨터 승리"
+    case "paper":
+      if compChoice == "rock" {
+        decision = "유저 승리 -> 유저 공격"
+      } else if compChoice == "scissor"{
+        decision = "컴퓨터 승리 -> 컴퓨터 공격"
       }
 
-    case "가위":
-      if compChoice == "바위" {
-        decision = "컴퓨터 승리"
-      } else if compChoice == "보" {
-        decision = "유저 승리"
+    case "scissor":
+      if compChoice == "rock" {
+        decision = "컴퓨터 승리 -> 컴퓨터 공격"
+      } else if compChoice == "paper" {
+        decision = "유저 승리 -> 유저 공격"
       }
     default:
-      print("오류")
+      print("")
   }
   return decision
 }
 
-let userChoice = getUserChoice(userInput: "가위")
-let compChoice = getComputerChoice()
+var resultbool: Bool = true
 
-print("나: \(userChoice)")
-print("컴퓨터: \(compChoice)")
-print(determineWinner(userChoice, compChoice))
+func mukjjibba(_ resultvalue: String, _ userChoice: String, _ compChoice: String) -> String{
+    var result: String = "진행"
+    print(resultvalue)
+    switch resultvalue {
+        case "컴퓨터 승리 -> 컴퓨터 공격" :
+        print("컴퓨터 공격을 시작합니다.")
+        print("컴퓨터 확인 데이터: \(compChoice)")
+        print("유저 확인 데이터: \(userChoice)")
+            switch compChoice{
+                case "rock":
+                    if userChoice == "rock"{
+                        result = "컴퓨터 승리"
+                        resultbool = false
+                    } else if userChoice == "scissor" {
+                        result = "컴퓨터 공격"
+                        resultbool = true
+                    } else if userChoice == "paper"{
+                        result = "유저 공격"
+                        resultbool = true
+                    }
+                case "scissor":
+                    if userChoice == "paper"{
+                        result = "컴퓨터 공격"
+                        resultbool = true
+                    } else if userChoice == "rock"{
+                        result = "유저 공격"
+                        resultbool = true
+                    } else if userChoice == "scissor"{
+                        result = "컴퓨터 승리"
+                        resultbool = false
+                    }
+                case "paper":
+                    if userChoice == "rock"{
+                        result = "컴퓨터 공격"
+                        resultbool = true
+                    } else if userChoice == "scissor"{
+                        result = "유저 공격"
+                        resultbool = true
+                    } else if userChoice == "paper"{
+                        result = "컴퓨터 승리"
+                        resultbool = false
+                    }
+                default:
+                    print("")
+                    resultbool = true
+                }
+       
+        case "유저 승리 -> 유저 공격" :
+        print("유저 공격을 시작합니다.")
+        print("유저 확인 데이터: \(userChoice)")
+        print("컴퓨터 확인 데이터: \(compChoice)")
+        switch userChoice{
+            case "rock":
+                if compChoice == "rock"{
+                    result = "유저 승리"
+                    resultbool = false
+                } else if compChoice == "scissor" {
+                    result = "유저 공격"
+                    resultbool = true
+                } else if compChoice == "paper"{
+                    result = "컴퓨터 공격"
+                    resultbool = true
+                }
+            case "scissor":
+                if compChoice == "paper"{
+                    result = "유저 공격"
+                    resultbool = true
+                } else if compChoice == "rock"{
+                    result = "컴퓨터 공격"
+                    resultbool = true
+                } else if compChoice == "scissor"{
+                    result = "유저 승리"
+                    resultbool = false
+                }
+            case "paper":
+                if compChoice == "rock"{
+                    result = "유저 공격"
+                    resultbool = true
+                } else if compChoice == "scissor"{
+                    result = "컴퓨터 공격"
+                    resultbool = true
+                } else if compChoice == "paper"{
+                    result = "유저 승리"
+                    resultbool = false
+                }
+                
+            default:
+                print("")
+                resultbool = true
+            }
+        
+        case "비김":
+        result = "비김"
+        resultbool = true
+        
+        default:
+        print("")
+        resultbool = true
+    }
+    
+    return result
+}
+
+//let userChoice = getUserChoice(userInput: "")
+//var compChoice = getComputerChoice()
+//var decision = determineWinner(userChoice, compChoice)
+//
+//print("==================================")
+//print("나: \(userChoice)")
+//print("컴퓨터: \(compChoice)")
+//print("==================================")
+//print(decision)
+//print("==================================")
+//print("==================================")
+//print(mukjjibba(decision, userChoice, compChoice))
+//print("==================================")
+//print("==================================")
+
+while resultbool != false {
+    let userChoice = getUserChoice(userInput: "") // 인풋 : 유저
+    let compChoice = getComputerChoice() // 인풋 : 랜덤 컴퓨터
+    let decision = determineWinner(userChoice, compChoice) // 가위바위보
+    print(mukjjibba(decision, userChoice, compChoice)) // 묵찌빠
+}
