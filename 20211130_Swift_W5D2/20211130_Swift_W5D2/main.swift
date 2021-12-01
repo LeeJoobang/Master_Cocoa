@@ -4,7 +4,6 @@
 //
 //  Created by Joobang Lee on 2021/11/30.
 //
-
 import Foundation
 
 print("==================================")
@@ -12,12 +11,12 @@ print("          선공을 정하겠습니다.")
 print("==================================")
 print("\n")
 
-func getUserChoice(userInput: String)->String{
+func getUserChoice()->String{
     let userInput = readLine()!
     if userInput == "rock" || userInput == "scissor" || userInput == "paper"{
         return userInput
     } else {
-        return "가위(scissor), 바위(rock), 보(paper)를 내주세요."
+        return ""
     }
 }
 
@@ -60,16 +59,16 @@ func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
       } else if compChoice == "paper" {
         decision = "유저 승리 -> 유저 공격"
       }
-    default:
-      print("")
+    default :
+        return decision
   }
   return decision
 }
 
 var resultbool: Bool = true
 
-func mukjjibba(_ resultvalue: String, _ userChoice: String, _ compChoice: String) -> String{
-    var result: String = "진행"
+func getMukjjibba(_ resultvalue: String, _ userChoice: String, _ compChoice: String) -> String{
+    var result: String = "묵찌빠 시작"
     print(resultvalue)
     switch resultvalue {
         case "컴퓨터 승리 -> 컴퓨터 공격" :
@@ -160,7 +159,7 @@ func mukjjibba(_ resultvalue: String, _ userChoice: String, _ compChoice: String
             }
         
         case "비김":
-        result = "비김"
+        //result = "비김"
         resultbool = true
         
         default:
@@ -186,9 +185,16 @@ func mukjjibba(_ resultvalue: String, _ userChoice: String, _ compChoice: String
 //print("==================================")
 //print("==================================")
 
-while resultbool != false {
-    let userChoice = getUserChoice(userInput: "") // 인풋 : 유저
-    let compChoice = getComputerChoice() // 인풋 : 랜덤 컴퓨터
-    let decision = determineWinner(userChoice, compChoice) // 가위바위보
-    print(mukjjibba(decision, userChoice, compChoice)) // 묵찌빠
-}
+
+let userChoice = getUserChoice()
+let compChoice = getComputerChoice()
+let decision = determineWinner(userChoice, compChoice)
+let mukjjibba = getMukjjibba(decision, userChoice, compChoice)
+
+print("==================================")
+print("나: \(userChoice)")
+print("컴퓨터: \(compChoice)")
+print("==================================")
+print(decision)
+print("==================================")
+//비기면? 진행되는데
