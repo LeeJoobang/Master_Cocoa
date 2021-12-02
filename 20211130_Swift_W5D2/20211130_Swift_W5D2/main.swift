@@ -36,7 +36,7 @@ func getComputerChoice() ->  String {
 }
 
 func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
-  var decision: String = "비김"
+  var decision: String = ""
 
     switch userChoice {
     case "rock":
@@ -60,21 +60,25 @@ func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
         decision = "유저 승리 -> 유저 공격"
       }
     default :
-        return decision
+        decision = "비김"
   }
   return decision
 }
 
+
 var resultbool: Bool = true
 
 func getMukjjibba(_ resultvalue: String, _ userChoice: String, _ compChoice: String) -> String{
-    var result: String = "묵찌빠 시작"
+    
+    var result: String = ""
     print(resultvalue)
+    
+    
     switch resultvalue {
         case "컴퓨터 승리 -> 컴퓨터 공격" :
-        print("컴퓨터 공격을 시작합니다.")
-        print("컴퓨터 확인 데이터: \(compChoice)")
-        print("유저 확인 데이터: \(userChoice)")
+//        print("컴퓨터 공격을 시작합니다.")
+//        print("컴퓨터 확인 데이터: \(compChoice)")
+//        print("유저 확인 데이터: \(userChoice)")
             switch compChoice{
                 case "rock":
                     if userChoice == "rock"{
@@ -115,9 +119,9 @@ func getMukjjibba(_ resultvalue: String, _ userChoice: String, _ compChoice: Str
                 }
        
         case "유저 승리 -> 유저 공격" :
-        print("유저 공격을 시작합니다.")
-        print("유저 확인 데이터: \(userChoice)")
-        print("컴퓨터 확인 데이터: \(compChoice)")
+//        print("유저 공격을 시작합니다.")
+//        print("유저 확인 데이터: \(userChoice)")
+//        print("컴퓨터 확인 데이터: \(compChoice)")
         switch userChoice{
             case "rock":
                 if compChoice == "rock"{
@@ -170,22 +174,6 @@ func getMukjjibba(_ resultvalue: String, _ userChoice: String, _ compChoice: Str
     return result
 }
 
-//let userChoice = getUserChoice(userInput: "")
-//var compChoice = getComputerChoice()
-//var decision = determineWinner(userChoice, compChoice)
-//
-//print("==================================")
-//print("나: \(userChoice)")
-//print("컴퓨터: \(compChoice)")
-//print("==================================")
-//print(decision)
-//print("==================================")
-//print("==================================")
-//print(mukjjibba(decision, userChoice, compChoice))
-//print("==================================")
-//print("==================================")
-
-
 let userChoice = getUserChoice()
 let compChoice = getComputerChoice()
 let decision = determineWinner(userChoice, compChoice)
@@ -196,5 +184,16 @@ print("나: \(userChoice)")
 print("컴퓨터: \(compChoice)")
 print("==================================")
 print(decision)
+if decision == "유저 승리 -> 유저 공격" || decision == "컴퓨터 승리 -> 컴퓨터 공격"{
+    print("묵찌빠를 진행합니다.")
+    while resultbool{
+        let userChoice = getUserChoice()
+        let compChoice = getComputerChoice()
+        print("나: \(userChoice)")
+        print("컴퓨터: \(compChoice)")
+        print(getMukjjibba(decision, userChoice, compChoice))
+    }
+} else{
+    print("다시 가위 바위 보를 진행합니다.")
+}
 print("==================================")
-//비기면? 진행되는데
