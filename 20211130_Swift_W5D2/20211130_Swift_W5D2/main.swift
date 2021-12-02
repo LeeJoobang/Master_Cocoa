@@ -6,10 +6,6 @@
 //
 import Foundation
 
-print("==================================")
-print("          선공을 정하겠습니다.")
-print("==================================")
-print("\n")
 
 func getUserChoice()->String{
     let userInput = readLine()!
@@ -44,6 +40,8 @@ func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
         decision = "컴퓨터 승리 -> 컴퓨터 공격"
       } else if compChoice == "scissor"{
         decision = "유저 승리 -> 유저 공격"
+      } else if compChoice == "rock"{
+          decision = "비김"
       }
 
     case "paper":
@@ -51,6 +49,8 @@ func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
         decision = "유저 승리 -> 유저 공격"
       } else if compChoice == "scissor"{
         decision = "컴퓨터 승리 -> 컴퓨터 공격"
+      } else if compChoice == "paper"{
+          decision = "비김"
       }
 
     case "scissor":
@@ -58,9 +58,13 @@ func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
         decision = "컴퓨터 승리 -> 컴퓨터 공격"
       } else if compChoice == "paper" {
         decision = "유저 승리 -> 유저 공격"
+      } else if compChoice == "scissor" {
+          decision = "비김"
       }
+    
     default :
-        decision = "비김"
+        decision = "해당없음"
+        return decision
   }
   return decision
 }
@@ -173,6 +177,11 @@ func getMukjjibba(_ resultvalue: String, _ userChoice: String, _ compChoice: Str
     
     return result
 }
+
+print("==================================")
+print("          선공을 정하겠습니다.")
+print("==================================")
+print("\n")
 
 let userChoice = getUserChoice()
 let compChoice = getComputerChoice()
